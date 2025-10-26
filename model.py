@@ -6,7 +6,7 @@ class EBM(nn.Module):
     def __init__(self, dim=2):
         super(EBM, self).__init__()
         # The normalizing constant logZ(θ)        
-        self.z = nn.Parameter(torch.tensor([1000.0], requires_grad=True))  # Init logZ to 0; adjust if needed
+        self.z = nn.Parameter(torch.tensor([1000.0], requires_grad=True))  #adjust if needed
         self.f = nn.Sequential(
             nn.Linear(dim, 1024),
             nn.LayerNorm(1024),
@@ -28,8 +28,8 @@ class EBM(nn.Module):
         self.apply(self.weights_init)
         
     def forward(self, x):
-        p = self.f(x) 
-        return p
+        #in my application the term log z (self.z) was useless, but you can introduce it 
+        return self.f(x) 
     
     @staticmethod
     def weights_init(m):
@@ -37,5 +37,5 @@ class EBM(nn.Module):
             # Xavier uniforme su pesi
             nn.init.xavier_uniform_(m.weight, gain=nn.init.calculate_gain('leaky_relu'))
             if m.bias is not None:
-                nn.init.constant_(m.bias, -1000.0)
+                nn.init.constant_(m.bias, -1000.0) #adjust if needed
 
