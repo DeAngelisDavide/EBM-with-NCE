@@ -1,7 +1,7 @@
 import torch
 import os
 
-def train_energy_model(
+def train_ebm(
     energy,
     noise,
     dataloader,
