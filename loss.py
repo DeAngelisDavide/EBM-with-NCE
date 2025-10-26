@@ -4,7 +4,7 @@ import torch.nn.functional as F
 
 def nce_loss(energy, noise, x, gen):
     #for first term
-    f_x = energy.f(x)
+    f_x = energy.f(x) #.f in case the forward is changed by introducing z
     logp_x = noise.log_prob(x)
     logz = energy.z
 
