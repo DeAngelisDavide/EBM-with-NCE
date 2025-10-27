@@ -3,11 +3,11 @@
 This repository implements an **Energy-Based Model (EBM)** trained using **Noise Contrastive Estimation (NCE)**.  
 
 ## Project Structure
- * loss.py # NCE loss implementations
- * model.py # Energy-Based Model (EBM) implementations
- * train.py # Training loop with early stopping & checkpointing
- * sampling.py # Langevin dynamics sampling for generation
- * plots.py # Evaluation and visualization utilities
+ * loss.py -> NCE loss implementations
+ * model.py ->  Energy-Based Model (EBM) implementations
+ * train.py ->  Training loop with early stopping & checkpointing
+ * sampling.py ->  Langevin dynamics sampling for generation
+ * plots.py ->  Evaluation and visualization utilities
 
 ## Requirements
 
@@ -32,21 +32,12 @@ Implements two NCE variants:
 
 The model discriminates real data ( x \sim p_{\text{data}} ) from noise ( \tilde{x} \sim p_n )
 
-[
-\mathcal{L}*{\text{NCE}} =
--\mathbb{E}*{x \sim p_{\text{data}}} \left[ \log \frac{e^{f_\theta(x)}}{e^{f_\theta(x)} + Zp_n(x)} \right]
--\mathbb{E}*{\tilde{x} \sim p_n} \left[ \log \frac{Zp_n(\tilde{x})}{e^{f*\theta(\tilde{x})} + Zp_n(\tilde{x})} \right]
-]
-
 ---
 
 ## **sampling.py**
 
 Performs **Langevin Dynamics** in latent space to sample from the learned energy distribution:
 
-[
-x_{t+1} = x_t + \frac{\epsilon}{2} \nabla_x f_\theta(x_t) + \sqrt{\epsilon},\eta_t,\quad \eta_t \sim \mathcal{N}(0, I)
-]
 
 ---
 ## ⚠️ Notice
