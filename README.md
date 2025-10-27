@@ -30,13 +30,15 @@ Implements two NCE variants:
 * `nce_loss`: log-sum-exp based formulation
 * `nce_loss2`: logistic version using `logsigmoid`
 
-The model discriminates real data ( x \sim p_{\text{data}} ) from noise ( \tilde{x} \sim p_n )
+The model discriminates real data x ~ p_data from noise x_tilde ~ p_n
 
 ---
 
 ## **sampling.py**
 
 Performs **Langevin Dynamics** in latent space to sample from the learned energy distribution:
+x_{t+1} = x_t + (epsilon / 2) * grad_x(f_theta(x_t)) + sqrt(epsilon) * eta_t
+eta_t ~ N(0, I)
 
 
 ---
