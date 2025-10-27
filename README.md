@@ -42,8 +42,8 @@ x \sim p_{\text{data}}, \quad \tilde{x} \sim p_n
 Performs **Langevin Dynamics** in latent space to sample from the learned energy distribution:
 
 ```math
-x_{t+1} = x_t + \frac{\epsilon}{2} \nabla_x f_\theta(x_t) + \sqrt{\epsilon},\eta_t, \quad
-\eta_t \sim \mathcal{N}(0, I)
+\mathbf{x}_{t+1} = \mathbf{x}_t - \frac{\eta}{2}\,\nabla_{\mathbf{x}} E_\theta(\mathbf{x}_t) + \sqrt{\eta}\,\boldsymbol{\epsilon}_t, 
+\qquad \boldsymbol{\epsilon}_t \sim \mathcal{N}(0,I),
 ```
 
 
