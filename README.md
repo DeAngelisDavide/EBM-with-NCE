@@ -30,7 +30,10 @@ Implements two NCE variants:
 * `nce_loss`: log-sum-exp based formulation
 * `nce_loss2`: logistic version using `logsigmoid`
 
-The model discriminates real data $x \sim p_{\text{data}}$ from noise $\tilde{x} \sim p_n$
+The model discriminates between **real data** and **noise samples**:
+$
+x \sim p_{\text{data}}, \quad \tilde{x} \sim p_n
+$
 
 ---
 
@@ -38,7 +41,8 @@ The model discriminates real data $x \sim p_{\text{data}}$ from noise $\tilde{x}
 
 Performs **Langevin Dynamics** in latent space to sample from the learned energy distribution:
 $
-x_{t+1} = x_t + \frac{\epsilon}{2} \nabla_x f_\theta(x_t) + \sqrt{\epsilon},\eta_t,\quad \eta_t \sim \mathcal{N}(0, I)
+x_{t+1} = x_t + \frac{\epsilon}{2} \nabla_x f_\theta(x_t) + \sqrt{\epsilon},\eta_t, \quad
+\eta_t \sim \mathcal{N}(0, I)
 $
 
 
